@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,10 +128,38 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChiTietDDHsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DDHsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhapXuatTonsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NVGiaoHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VatTusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011260831082_Create_Table.cs" />
+    <Compile Include="Migrations\202011260831082_Create_Table.Designer.cs">
+      <DependentUpon>202011260831082_Create_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011260859465_update_table_khachhang.cs" />
+    <Compile Include="Migrations\202011260859465_update_table_khachhang.Designer.cs">
+      <DependentUpon>202011260859465_update_table_khachhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011261439277_Add_Role_COlum.cs" />
+    <Compile Include="Migrations\202011261439277_Add_Role_COlum.Designer.cs">
+      <DependentUpon>202011261439277_Add_Role_COlum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ChiTietDDH.cs" />
+    <Compile Include="Models\DBConnect.cs" />
+    <Compile Include="Models\DDH.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\NhapXuatTon.cs" />
+    <Compile Include="Models\NVGiaoHang.cs" />
+    <Compile Include="Models\VatTu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +173,39 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DDHs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DDHs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DDHs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DDHs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DDHs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHangs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHangs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHangs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHangs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VatTus\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VatTus\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\VatTus\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\VatTus\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VatTus\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDDHs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDDHs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDDHs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDDHs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ChiTietDDHs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapXuatTons\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapXuatTons\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapXuatTons\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapXuatTons\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhapXuatTons\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NVGiaoHangs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NVGiaoHangs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NVGiaoHangs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NVGiaoHangs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NVGiaoHangs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -162,10 +231,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +250,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011260831082_Create_Table.resx">
+      <DependentUpon>202011260831082_Create_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011260859465_update_table_khachhang.resx">
+      <DependentUpon>202011260859465_update_table_khachhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011261439277_Add_Role_COlum.resx">
+      <DependentUpon>202011261439277_Add_Role_COlum.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

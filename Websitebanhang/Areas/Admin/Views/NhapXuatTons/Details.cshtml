@@ -1,0 +1,51 @@
+﻿@model Websitebanhang.Models.NhapXuatTon
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NhapXuatTon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VatTu.TenVatTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VatTu.TenVatTu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Xuat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Xuat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ton)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

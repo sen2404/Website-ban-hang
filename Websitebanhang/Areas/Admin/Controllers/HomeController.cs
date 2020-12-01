@@ -7,8 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using Websitebanhang.Models;
 
+namespace Websitebanhang.Areas.Admin.Controllers
 
-namespace Websitebanhang.Controllers
+
 {
     public class HomeController : Controller
     {
@@ -33,7 +34,7 @@ namespace Websitebanhang.Controllers
         }
         public ActionResult Register()
         {
-           
+
             return View();
         }
         [HttpPost]
@@ -58,7 +59,7 @@ namespace Websitebanhang.Controllers
                 }
 
             }
-                return View();
+            return View();
         }
         public ActionResult Login()
         {
@@ -74,22 +75,22 @@ namespace Websitebanhang.Controllers
 
                 var f_password = GetMD5(password);
                 var data = db.KhachHangs.Where(s => s.email.Equals(email) && s.password.Equals(f_password)).ToList();
-                if (data!=null)
+                if (data != null)
                 {
                     //add session
                     Session["Tenkh"] = data.FirstOrDefault().TenKhachHang;
                     Session["Email"] = data.FirstOrDefault().email;
                     Session["idKhachHang"] = data.FirstOrDefault().id;
                     var checkadmin = data.FirstOrDefault().Role;
-                    if(checkadmin=="Admin")
+                    if (checkadmin == "Admin")
                     {
-                        return RedirectToAction("Index", "Home",new { Area = "Admin" });
+                        return RedirectToAction("Index", "Home", new { Area = "Admin" });
                     }
-                    else 
+                    else
                     {
                         return RedirectToAction("Index");
                     }
-                    
+
                 }
                 else
                 {
