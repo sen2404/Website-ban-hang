@@ -68,37 +68,30 @@ namespace Websitebanhang.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
         {
-            if (ModelState.IsValid)
+            var f_password = GetMD5(password);
+            var data = db.KhachHangs.Where(s => s.email.Equals(email) && s.password.Equals(f_password)).FirstOrDefault();
+            if (data != null)
             {
-
-
-                var f_password = GetMD5(password);
-                var data = db.KhachHangs.Where(s => s.email.Equals(email) && s.password.Equals(f_password)).ToList();
-                if (data!=null)
+                //add session
+                Session["Tenkh"] = data.TenKhachHang;
+                Session["idKhachHang"] = data.id;
+                var checkadmin = data.Role ?? null;
+                if (checkadmin == "Admin")
                 {
-                    //add session
-                    Session["Tenkh"] = data.FirstOrDefault().TenKhachHang;
-                    Session["Email"] = data.FirstOrDefault().email;
-                    Session["idKhachHang"] = data.FirstOrDefault().id;
-                    var checkadmin = data.FirstOrDefault().Role;
-                    if(checkadmin=="Admin")
-                    {
-                        return RedirectToAction("Index", "Home",new { Area = "Admin" });
-                    }
-                    else 
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    
+                    return RedirectToAction("Index", "Home", new { Area = "Admin" });
                 }
                 else
                 {
-                    ViewBag.error = "Đăng nhập không thành công";
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Index");
                 }
+
+            }
+            else
+            {
+                ViewBag.error = "Đăng nhập không thành công";
+                return RedirectToAction("Login");
             }
 
-            return View();
         }
         //Logout
         public ActionResult Logout()

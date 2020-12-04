@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Websitebanhang.Models;
+using PagedList;
 
 namespace Websitebanhang.Areas.Admin.Controllers
 
@@ -32,6 +33,15 @@ namespace Websitebanhang.Areas.Admin.Controllers
 
             return View();
         }
+        public ViewResult PageList(int? page)
+        {
+            var pagesize = 10;
+            var model = db.VatTus.ToList();
+            int pagenumber = page ?? 1;
+            return View(model.ToPagedList(pagenumber, pagesize));
+
+        }
+        
         public ActionResult Register()
         {
 
@@ -79,7 +89,6 @@ namespace Websitebanhang.Areas.Admin.Controllers
                 {
                     //add session
                     Session["Tenkh"] = data.FirstOrDefault().TenKhachHang;
-                    Session["Email"] = data.FirstOrDefault().email;
                     Session["idKhachHang"] = data.FirstOrDefault().id;
                     var checkadmin = data.FirstOrDefault().Role;
                     if (checkadmin == "Admin")
