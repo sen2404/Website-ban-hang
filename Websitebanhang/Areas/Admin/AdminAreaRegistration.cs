@@ -17,7 +17,7 @@ namespace Websitebanhang.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { action = "Index",controler="Home", id = UrlParameter.Optional },
                 new[] {"Websitebanhang.Areas.Admin.Controllers"}
             );
         }

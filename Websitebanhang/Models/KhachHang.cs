@@ -26,5 +26,6 @@ namespace Websitebanhang.Models
         [System.ComponentModel.DataAnnotations.Compare("password")]
 
         public string confirm_password { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
