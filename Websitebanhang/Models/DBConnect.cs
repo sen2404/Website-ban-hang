@@ -13,8 +13,7 @@ namespace Websitebanhang.Models
         public virtual DbSet<ChiTietDDH> ChiTietDDHs { get; set; }
         public virtual DbSet<NhapXuatTon> NhapXuatTons { get; set; }
         public virtual DbSet<NVGiaoHang> NVGiaoHangs { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+     
         public DBConnect()
             : base("name=DBConnect")
         {

@@ -7,13 +7,13 @@ namespace Websitebanhang.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class add_table_gh : IMigrationMetadata
+    public sealed partial class update_all_tables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(add_table_gh));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update_all_tables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202012171538305_add_table_gh"; }
+            get { return "202012211054133_update_all_tables"; }
         }
         
         string IMigrationMetadata.Source

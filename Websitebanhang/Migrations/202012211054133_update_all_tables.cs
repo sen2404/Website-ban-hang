@@ -3,7 +3,7 @@ namespace Websitebanhang.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Create_Table : DbMigration
+    public partial class update_all_tables : DbMigration
     {
         public override void Up()
         {
@@ -47,7 +47,10 @@ namespace Websitebanhang.Migrations
                         id = c.Int(nullable: false, identity: true),
                         TenKhachHang = c.String(nullable: false, maxLength: 30),
                         DiaChi = c.String(),
+                        Role = c.String(),
                         DienThoai = c.String(nullable: false, maxLength: 15),
+                        email = c.String(nullable: false),
+                        password = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.id);
             

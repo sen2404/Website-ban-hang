@@ -15,6 +15,6 @@ namespace Websitebanhang.Models
         public string DonViTinh { get; set; }
         public int SoLuong { get; set; }
         public virtual ICollection<NhapXuatTon> NhapXuatTons { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+   
     }
 }
