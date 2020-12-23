@@ -10,7 +10,6 @@ using PagedList;
 
 namespace Websitebanhang.Areas.Admin.Controllers
 
-
 {
     public class HomeController : Controller
     {
